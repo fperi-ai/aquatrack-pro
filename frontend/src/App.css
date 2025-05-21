@@ -1,0 +1,439 @@
+:root {
+  --color-bg: #f8fafc;
+  --color-bg-gradient: linear-gradient(135deg, #e0e7ef 0%, #f8fafc 100%);
+  --color-card: #fff;
+  --color-header: #fff;
+  --color-primary: #2563eb;
+  --color-primary-light: #4f8cff;
+  --color-primary-dark: #0ea5e9;
+  --color-text: #222;
+  --color-text-secondary: #374151;
+  --color-border: #d1d5db;
+  --color-shadow: rgba(0,0,0,0.07);
+  --color-shadow-hover: rgba(79,140,255,0.10);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #181c22;
+    --color-bg-gradient: linear-gradient(135deg, #23272f 0%, #181c22 100%);
+    --color-card: #23272f;
+    --color-header: #23272f;
+    --color-primary: #60a5fa;
+    --color-primary-light: #93c5fd;
+    --color-primary-dark: #2563eb;
+    --color-text: #f3f4f6;
+    --color-text-secondary: #cbd5e1;
+    --color-border: #374151;
+    --color-shadow: rgba(0,0,0,0.25);
+    --color-shadow-hover: rgba(79,140,255,0.18);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'SF Pro Display', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--color-bg-gradient);
+  min-height: 100vh;
+  color: var(--color-text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background: var(--color-header);
+  box-shadow: 0 2px 16px 0 var(--color-shadow);
+  padding: 48px 0 24px 0;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  margin-bottom: 32px;
+  transition: background 0.3s;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.App-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--color-text);
+  text-shadow: 0 2px 8px var(--color-shadow);
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.App-header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary-light) 0%, var(--color-primary-dark) 100%);
+  transition: width 0.5s ease;
+}
+
+.App-header:hover h1::after {
+  width: 80%;
+  animation: pulse 1.5s infinite;
+}
+
+.theme-switch {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  z-index: 10;
+}
+
+.theme-switch input {
+  display: none;
+}
+.theme-switch label {
+  cursor: pointer;
+  background: var(--color-card);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px 0 var(--color-shadow);
+  padding: 6px 16px;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--color-border);
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+main {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--color-card);
+  border-radius: 24px;
+  box-shadow: 0 4px 32px 0 var(--color-shadow);
+  padding: 32px 24px 40px 24px;
+  transition: background 0.3s;
+  animation: scaleIn 0.6s ease-out;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  margin-bottom: 18px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #f4f6fa;
+  transition: border 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
+  outline: none;
+  color: var(--color-text);
+}
+input:focus, select:focus, textarea:focus {
+  border: 1.5px solid var(--color-primary-light);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(79,140,255,0.2);
+}
+
+button[type="submit"] {
+  background: linear-gradient(90deg, var(--color-primary-light) 0%, var(--color-primary-dark) 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 0;
+  width: 100%;
+  box-shadow: 0 2px 8px 0 var(--color-shadow);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  box-shadow: 0 4px 16px 0 var(--color-shadow-hover);
+  transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+  animation: pulse 0.3s ease-in-out;
+}
+
+form h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 18px;
+}
+
+label {
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.card-aquarium {
+  background: #f4f6fa;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px 0 var(--color-shadow);
+  padding: 18px 16px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  animation: slideInFromRight 0.5s ease-out;
+}
+.card-aquarium:hover {
+  box-shadow: 0 6px 24px 0 var(--color-shadow-hover);
+  transform: translateY(-5px);
+}
+.card-aquarium img {
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px 0 var(--color-shadow);
+}
+.card-aquarium-details h4 {
+  margin: 0 0 6px 0;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  font-weight: 600;
+}
+.card-aquarium-details p {
+  margin: 2px 0;
+  color: var(--color-text-secondary);
+  font-size: 0.98rem;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 16px 4px 24px 4px;
+  }
+  .App-header {
+    padding: 32px 0 16px 0;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    margin-bottom: 18px;
+  }
+  .theme-switch {
+    right: 12px;
+    top: 12px;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Tema oscuro forzado por clase */
+body.theme-dark, .theme-dark body {
+  --color-bg: #181c22;
+  --color-bg-gradient: linear-gradient(135deg, #23272f 0%, #181c22 100%);
+  --color-card: #23272f;
+  --color-header: #23272f;
+  --color-primary: #60a5fa;
+  --color-primary-light: #93c5fd;
+  --color-primary-dark: #2563eb;
+  --color-text: #f3f4f6;
+  --color-text-secondary: #cbd5e1;
+  --color-border: #374151;
+  --color-shadow: rgba(0,0,0,0.25);
+  --color-shadow-hover: rgba(79,140,255,0.18);
+}
+body.theme-light, .theme-light body {
+  --color-bg: #f8fafc;
+  --color-bg-gradient: linear-gradient(135deg, #e0e7ef 0%, #f8fafc 100%);
+  --color-card: #fff;
+  --color-header: #fff;
+  --color-primary: #2563eb;
+  --color-primary-light: #4f8cff;
+  --color-primary-dark: #0ea5e9;
+  --color-text: #222;
+  --color-text-secondary: #374151;
+  --color-border: #d1d5db;
+  --color-shadow: rgba(0,0,0,0.07);
+  --color-shadow-hover: rgba(79,140,255,0.10);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Aplicar animaciones a elementos */
+.App-header {
+  animation: fadeIn 0.8s ease-out;
+}
+
+main {
+  animation: scaleIn 0.6s ease-out;
+}
+
+form {
+  animation: fadeIn 0.7s ease-out;
+}
+
+.form-group {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+.form-group:nth-child(6) { animation-delay: 0.6s; }
+
+.card-aquarium {
+  animation: slideInFromRight 0.5s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.card-aquarium:hover {
+  transform: translateY(-5px);
+}
+
+button[type="submit"] {
+  transition: transform 0.2s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+  animation: pulse 0.3s ease-in-out;
+}
+
+input, select, textarea {
+  transition: border 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  box-shadow: 0 0 0 3px rgba(79,140,255,0.2);
+}
+
+.theme-switch label {
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.theme-switch label:hover {
+  transform: translateY(-2px);
+}
+
+/* Animación para nuevos elementos añadidos */
+@keyframes highlight {
+  0% {
+    background-color: rgba(79,140,255,0.3);
+    box-shadow: 0 0 20px rgba(79,140,255,0.5);
+  }
+  70% {
+    background-color: rgba(79,140,255,0.1);
+    box-shadow: 0 0 10px rgba(79,140,255,0.2);
+  }
+  100% {
+    background-color: transparent;
+    box-shadow: 0 2px 12px 0 var(--color-shadow);
+  }
+}
+
+.new-item {
+  animation: highlight 2.5s ease-out !important;
+}
+
+/* Clase para transición suave entre temas */
+.theme-transition,
+.theme-transition * {
+  transition: background-color 0.5s ease, 
+              color 0.5s ease, 
+              border-color 0.5s ease, 
+              box-shadow 0.5s ease !important;
+}
+
+/* Animación para el logo */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Mejorar animación de tarjetas */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
