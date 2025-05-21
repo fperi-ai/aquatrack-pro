@@ -1,0 +1,21 @@
+# Maven build output
+/target/
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Misc
+.DS_Store
+
+# IDE files (Eclipse, IntelliJ)
+.project
+.classpath
+.settings/
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
